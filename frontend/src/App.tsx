@@ -1,14 +1,11 @@
-import "./App.css";
-import { Button } from "./components/ui/button";
+import Header from "./components/shared/Header";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 function App() {
 	return (
-		<>
-			<h1 className="font-bold text-3xl text-blue-400">
-				Hey there! I am ready to ace this interview and land this job!
-			</h1>
-			<Button>Click me</Button>
-		</>
+		<ThemeProvider>
+			<Header />
+		</ThemeProvider>
 	);
 }
 
