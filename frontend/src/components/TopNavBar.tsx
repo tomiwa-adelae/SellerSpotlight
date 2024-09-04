@@ -2,6 +2,7 @@ import React from "react";
 import { MobileNavbar } from "./MobileNavbar";
 import { Theme } from "./shared/Theme";
 import { Link } from "react-router-dom";
+import { MobileProfileDropDown } from "./MobileProfileDropDown";
 
 const TopNavBar = ({ children }: { children?: React.ReactNode }) => {
 	return (
@@ -21,6 +22,7 @@ const TopNavBar = ({ children }: { children?: React.ReactNode }) => {
 			<div className="md:flex-1 flex items-center justify-end gap-4">
 				{children}
 				<Theme />
+				<MobileProfileDropDown />
 				<MobileNavbar />
 			</div>
 		</div>

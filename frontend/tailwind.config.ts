@@ -24,6 +24,9 @@ const config = {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
 			},
+			zIndex: {
+				"100": "100",
+			},
 			colors: {
 				dark: "#0F172A",
 				background: "hsl(var(--background))",

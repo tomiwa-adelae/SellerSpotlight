@@ -73,7 +73,9 @@ const SignIn = () => {
 			navigate("/dashboard");
 		} catch (error: any) {
 			toast({
-				title: error?.response?.data?.message,
+				title:
+					error?.response?.data?.message ||
+					"Something went wrong! Please try again.",
 				variant: "destructive",
 			});
 		}

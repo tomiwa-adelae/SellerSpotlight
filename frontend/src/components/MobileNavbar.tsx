@@ -74,7 +74,7 @@ export function MobileNavbar() {
 						);
 					})}
 				</nav>
-				<div className="flex items-center justify-start gap-2">
+				{/* <div className="flex items-center justify-start gap-2 cursor-pointer dark:hover:bg-gray-900 transition-all p-2 rounded-md w-full">
 					<img
 						src={"/assets/images/user.jpg"}
 						alt="Tomiwa"
@@ -86,7 +86,7 @@ export function MobileNavbar() {
 							adelaetomiwa6@gmail.com
 						</small>
 					</div>
-				</div>
+				</div> */}
 			</SheetContent>
 		</Sheet>
 	);
