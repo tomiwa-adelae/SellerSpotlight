@@ -9,12 +9,12 @@ const Header = () => {
 				<Link to="/">
 					<h3
 						style={{ fontFamily: "Irish Grover" }}
-						className="text-purple-400 text-3xl font-bold"
+						className="text-blue-400 text-3xl font-bold"
 					>
 						SellerSpotlight
 					</h3>
 				</Link>
-				<nav className="flex-1 flex items-center justify-center gap-8 text-xs md:text-sm font-semibold">
+				<nav className="flex-1 flex items-center justify-center gap-8 text-xs font-semibold uppercase">
 					{navLinks.map(({ label, route }, index) => (
 						<Link key={index} to={route}>
 							{label}

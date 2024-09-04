@@ -1,4 +1,11 @@
-import { MonitorCog, MoonStar, Sun } from "lucide-react";
+import {
+	LayoutDashboard,
+	MonitorCog,
+	MoonStar,
+	Star,
+	Sun,
+	Users,
+} from "lucide-react";
 
 export const navLinks = [
 	{
@@ -16,6 +23,24 @@ export const navLinks = [
 	{
 		label: "Services",
 		route: "/services",
+	},
+];
+
+export const sidebarLinks = [
+	{
+		route: "/dashboard",
+		label: "Dashboard",
+		icon: LayoutDashboard,
+	},
+	{
+		route: "/sellers",
+		label: "Sellers",
+		icon: Users,
+	},
+	{
+		route: "/reviews",
+		label: "Reviews",
+		icon: Star,
 	},
 ];
 

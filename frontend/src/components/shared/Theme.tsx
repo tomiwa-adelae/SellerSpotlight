@@ -15,11 +15,7 @@ export function Theme() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button
-					className="dark:bg-dark dark:border-gray-700 border"
-					variant="ghost"
-					size={"icon"}
-				>
+				<Button variant="ghost" size={"icon"}>
 					{mode === "light" ? <Sun /> : <MoonStar />}
 				</Button>
 			</DropdownMenuTrigger>

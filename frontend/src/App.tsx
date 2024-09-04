@@ -1,10 +1,23 @@
-import Header from "./components/shared/Header";
+import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeProvider";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Dashboard from "./pages/Dashboard";
+import Sellers from "./pages/Sellers";
+import Reviews from "./pages/Reviews";
 
 function App() {
 	return (
 		<ThemeProvider>
-			<Header />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/sign-up" element={<SignUp />} />
+				<Route path="/sign-in" element={<SignIn />} />
+				<Route path="/dashboard" element={<Dashboard />} />
+				<Route path="/sellers" element={<Sellers />} />
+				<Route path="/reviews" element={<Reviews />} />
+			</Routes>
 		</ThemeProvider>
 	);
 }
