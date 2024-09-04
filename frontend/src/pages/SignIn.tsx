@@ -19,6 +19,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { redirect } from "react-router-dom";
 import { useAuth } from "@/context/AuthProvider";
+import Logo from "@/components/shared/Logo";
 
 const FormSchema = z.object({
 	email: z.string().min(2, {
@@ -81,23 +82,9 @@ const SignIn = () => {
 		}
 	}
 	return (
-		<div className="flex items-center justify-center min-h-screen">
-			<div className="flex-1 flex items-start justify-center flex-col container h-screen py-8">
-				<Link to="/" className="flex items-center justify-start gap-2">
-					<img
-						src={"/assets/logo.png"}
-						alt={"SchoolHub Logo"}
-						width={1000}
-						height={1000}
-						className="w-8 h-8 md:w-10 md:h-10 object-cover"
-					/>
-					<h3
-						style={{ fontFamily: "Irish Grover" }}
-						className="text-purple-400 text-2xl font-bold"
-					>
-						SellerSpotlight
-					</h3>
-				</Link>
+		<div className="flex items-center justify-center min-h-screen h-screen relative p-6 md:p-0">
+			<div className="flex-1 flex items-start justify-center flex-col container h-full py-8 z-50 bg-white dark:bg-dark rounded-lg">
+				<Logo />
 				<div className="flex-1 w-full flex items-center justify-center">
 					<div className="w-full">
 						<h1 className="font-semibold text-3xl">Hi there 👋</h1>
@@ -194,10 +181,10 @@ const SignIn = () => {
 					</small>
 				</footer>
 			</div>
-			<div className="flex-1">
+			<div className="flex-1 fixed top-0 left-0 w-screen md:static">
 				<img
 					src={"/assets/images/auth-img.jpg"}
-					className="h-screen object-cover"
+					className="h-screen object-cover w-screen"
 				/>
 			</div>
 		</div>

@@ -22,7 +22,8 @@
 		"express-async-handler": "^1.2.0",
 		"express-validator": "^7.2.0",
 		"jsonwebtoken": "^9.0.2",
-		"mongoose": "^8.6.1"
+		"mongoose": "^8.6.1",
+		"query-string": "^9.1.0"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",

@@ -2,8 +2,10 @@ import {
 	LayoutDashboard,
 	MonitorCog,
 	MoonStar,
+	Settings,
 	Star,
 	Sun,
+	UserRoundPen,
 	Users,
 } from "lucide-react";
 
@@ -42,6 +44,16 @@ export const sidebarLinks = [
 		label: "Reviews",
 		icon: Star,
 	},
+	{
+		route: "/profile",
+		label: "Profile",
+		icon: UserRoundPen,
+	},
+	{
+		route: "/settings",
+		label: "Settings",
+		icon: Settings,
+	},
 ];
 
 export const themes = [
@@ -61,4 +73,4 @@ export const themes = [
 
 export const BASE_URL = "http://localhost:5000";
 
-export const githubRepo  ='https://github.com/tomiwa-adelae/Seller-s-hub'
+export const githubRepo = "https://github.com/tomiwa-adelae/Seller-s-hub";

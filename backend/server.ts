@@ -7,6 +7,7 @@ import cors from "cors";
 import { errorHandler, notFound } from "./middleware/errorMiddleware";
 
 import userRoutes from "./routes/userRoutes";
+import sellerRoutes from "./routes/sellerRoutes";
 import { connectDB } from "./config/db";
 
 const app: Express = express();
@@ -24,6 +25,7 @@ app.use(cookieParser());
 
 // API Routes
 app.use("/api/users", userRoutes);
+app.use("/api/sellers", sellerRoutes);
 app.get("/", (req: Request, res: Response) => {
 	res.send("API is up and running...");
 });

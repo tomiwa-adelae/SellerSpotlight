@@ -22,7 +22,9 @@ const TopNavBar = ({ children }: { children?: React.ReactNode }) => {
 			<div className="md:flex-1 flex items-center justify-end gap-4">
 				{children}
 				<Theme />
-				<MobileProfileDropDown />
+				<div className="md:hidden">
+					<MobileProfileDropDown />
+				</div>
 				<MobileNavbar />
 			</div>
 		</div>

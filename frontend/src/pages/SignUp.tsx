@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 import { BASE_URL } from "@/constants";
 import { Eye, EyeOff } from "lucide-react";
+import Logo from "@/components/shared/Logo";
 const FormSchema = z.object({
 	fullName: z.string().min(2, {
 		message: "Full name must be at least 2 characters.",
@@ -85,16 +86,9 @@ const SignUp = () => {
 	}
 
 	return (
-		<div className="flex items-center justify-center min-h-screen">
-			<div className="flex-1 flex items-start justify-center flex-col container h-screen py-8 gap-8">
-				<Link to="/">
-					<h3
-						style={{ fontFamily: "Irish Grover" }}
-						className="text-purple-400 text-2xl font-bold"
-					>
-						SellerSpotlight
-					</h3>
-				</Link>
+		<div className="flex items-center justify-center min-h-screen h-screen relative p-6 md:p-0">
+			<div className="flex-1 flex items-start justify-center flex-col container h-full py-8 z-50 bg-white dark:bg-dark rounded-lg">
+				<Logo />
 				<div className="flex-1 w-full flex items-center justify-center">
 					<div className="w-full">
 						<h1 className="font-semibold text-3xl">Hi there 👋</h1>
@@ -209,10 +203,10 @@ const SignUp = () => {
 					</small>
 				</footer>
 			</div>
-			<div className="flex-1">
+			<div className="flex-1 fixed top-0 left-0 w-screen md:static">
 				<img
 					src={"/assets/images/auth-img.jpg"}
-					className="h-screen object-cover"
+					className="h-screen object-cover w-screen"
 				/>
 			</div>
 		</div>
