@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SideBar from "../SideBar";
 import TopNavBar from "../TopNavBar";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
 
 // Importing all created components
 
@@ -10,6 +13,21 @@ export default function MainLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	const { toast } = useToast();
+	const navigate = useNavigate();
+
+	const { user } = useAuth();
+
+	useEffect(() => {
+		if (!user) {
+			toast({
+				title: "Please, sign into your account!",
+				variant: "destructive",
+			});
+			navigate("/sign-in");
+		}
+	}, [user]);
+
 	return (
 		<div>
 			<SideBar />

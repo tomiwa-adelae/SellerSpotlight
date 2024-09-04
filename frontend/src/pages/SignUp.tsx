@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,28 +15,73 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/context/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
+import axios from "axios";
+import { BASE_URL } from "@/constants";
+import { Eye, EyeOff } from "lucide-react";
 const FormSchema = z.object({
-	fullname: z.string().min(2, {
-		message: "Fullname must be at least 2 characters.",
+	fullName: z.string().min(2, {
+		message: "Full name must be at least 2 characters.",
 	}),
 	email: z.string().min(2, {
 		message: "Email must be at least 2 characters.",
 	}),
 	password: z.string().min(2, {
-		message: "Fullname must be at least 2 characters.",
+		message: "Password must be at least 2 characters.",
 	}),
 });
 
 const SignUp = () => {
+	const { toast } = useToast();
+	const navigate = useNavigate();
+
+	const { user, login } = useAuth();
+
+	useEffect(() => {
+		if (user) {
+			toast({
+				title: `You are already signed in as ${user.fullName}`,
+			});
+			setTimeout(() => {
+				navigate("/dashboard");
+			}, 3000);
+		}
+	}, [user]);
+
+	const [showPassword, setShowPassword] = useState(false);
+
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
-			fullname: "",
+			fullName: "",
 			email: "",
 			password: "",
 		},
 	});
-	function onSubmit(data: z.infer<typeof FormSchema>) {}
+	async function onSubmit(data: z.infer<typeof FormSchema>) {
+		try {
+			const res = await axios.post(
+				`${BASE_URL}/api/users`,
+				{
+					...data,
+				},
+				{ withCredentials: true }
+			);
+			toast({
+				title: `Account successfully created!`,
+				variant: "success",
+			});
+			login(res.data);
+			navigate("/dashboard");
+		} catch (error: any) {
+			toast({
+				title: error?.response?.data?.message,
+				variant: "destructive",
+			});
+		}
+	}
+
 	return (
 		<div className="flex items-center justify-center min-h-screen">
 			<div className="flex-1 flex items-start justify-center flex-col container h-screen py-8 gap-8">
@@ -62,10 +107,10 @@ const SignUp = () => {
 								>
 									<FormField
 										control={form.control}
-										name="fullname"
+										name="fullName"
 										render={({ field }) => (
 											<FormItem>
-												<FormLabel>Fullname</FormLabel>
+												<FormLabel>Full name</FormLabel>
 												<FormControl>
 													<Input
 														placeholder="John Doe"
@@ -100,18 +145,50 @@ const SignUp = () => {
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Password</FormLabel>
-												<FormControl>
-													<Input
-														placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-														{...field}
-													/>
+												<FormControl className="relative">
+													<div>
+														<Input
+															type={
+																showPassword
+																	? "text"
+																	: "password"
+															}
+															placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+															{...field}
+														/>
+														{showPassword ? (
+															<EyeOff
+																onClick={() =>
+																	setShowPassword(
+																		!showPassword
+																	)
+																}
+																className="absolute top-1/2 right-3 -translate-y-1/2 w-4 h-4 cursor-pointer"
+															/>
+														) : (
+															<Eye
+																onClick={() =>
+																	setShowPassword(
+																		!showPassword
+																	)
+																}
+																className="absolute top-1/2 right-3 -translate-y-1/2 w-4 h-4 cursor-pointer"
+															/>
+														)}
+													</div>
 												</FormControl>
 												<FormMessage />
 											</FormItem>
 										)}
 									/>
-									<Button className="w-full" type="submit">
-										Get started
+									<Button
+										disabled={form.formState.isSubmitting}
+										className="w-full"
+										type="submit"
+									>
+										{form.formState.isSubmitting
+											? "Signing up..."
+											: "Sign up"}
 									</Button>
 								</form>
 							</Form>

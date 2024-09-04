@@ -7,18 +7,24 @@ import Dashboard from "./pages/Dashboard";
 import Sellers from "./pages/Sellers";
 import Reviews from "./pages/Reviews";
 
+import { Toaster } from "@/components/ui/toaster";
+import { AuthProvider } from "./context/AuthProvider";
+
 function App() {
 	return (
-		<ThemeProvider>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/sign-up" element={<SignUp />} />
-				<Route path="/sign-in" element={<SignIn />} />
-				<Route path="/dashboard" element={<Dashboard />} />
-				<Route path="/sellers" element={<Sellers />} />
-				<Route path="/reviews" element={<Reviews />} />
-			</Routes>
-		</ThemeProvider>
+		<AuthProvider>
+			<ThemeProvider>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/sign-up" element={<SignUp />} />
+					<Route path="/sign-in" element={<SignIn />} />
+					<Route path="/dashboard" element={<Dashboard />} />
+					<Route path="/sellers" element={<Sellers />} />
+					<Route path="/reviews" element={<Reviews />} />
+				</Routes>
+				<Toaster />
+			</ThemeProvider>
+		</AuthProvider>
 	);
 }
 

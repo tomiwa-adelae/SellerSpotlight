@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -13,6 +13,13 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import axios from "axios";
+import { BASE_URL } from "@/constants";
+import { Eye, EyeOff } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { redirect } from "react-router-dom";
+import { useAuth } from "@/context/AuthProvider";
+
 const FormSchema = z.object({
 	email: z.string().min(2, {
 		message: "Email must be at least 2 characters.",
@@ -23,6 +30,24 @@ const FormSchema = z.object({
 });
 
 const SignIn = () => {
+	const { toast } = useToast();
+	const navigate = useNavigate();
+
+	const { user, login } = useAuth();
+
+	useEffect(() => {
+		if (user) {
+			toast({
+				title: `You are already signed in as ${user.fullName}`,
+			});
+			setTimeout(() => {
+				navigate("/dashboard");
+			}, 3000);
+		}
+	}, [user]);
+
+	const [showPassword, setShowPassword] = useState(false);
+
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
 		defaultValues: {
@@ -30,7 +55,29 @@ const SignIn = () => {
 			password: "",
 		},
 	});
-	function onSubmit(data: z.infer<typeof FormSchema>) {}
+
+	async function onSubmit(data: z.infer<typeof FormSchema>) {
+		try {
+			const res = await axios.post(
+				`${BASE_URL}/api/users/auth`,
+				{
+					...data,
+				},
+				{ withCredentials: true }
+			);
+			toast({
+				title: `Welcome back!`,
+				variant: "success",
+			});
+			login(res.data);
+			navigate("/dashboard");
+		} catch (error: any) {
+			toast({
+				title: error?.response?.data?.message,
+				variant: "destructive",
+			});
+		}
+	}
 	return (
 		<div className="flex items-center justify-center min-h-screen">
 			<div className="flex-1 flex items-start justify-center flex-col container h-screen py-8">
@@ -83,18 +130,50 @@ const SignIn = () => {
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Password</FormLabel>
-												<FormControl>
-													<Input
-														placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-														{...field}
-													/>
+												<FormControl className="relative">
+													<div>
+														<Input
+															type={
+																showPassword
+																	? "text"
+																	: "password"
+															}
+															placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+															{...field}
+														/>
+														{showPassword ? (
+															<EyeOff
+																onClick={() =>
+																	setShowPassword(
+																		!showPassword
+																	)
+																}
+																className="absolute top-1/2 right-3 -translate-y-1/2 w-4 h-4 cursor-pointer"
+															/>
+														) : (
+															<Eye
+																onClick={() =>
+																	setShowPassword(
+																		!showPassword
+																	)
+																}
+																className="absolute top-1/2 right-3 -translate-y-1/2 w-4 h-4 cursor-pointer"
+															/>
+														)}
+													</div>
 												</FormControl>
 												<FormMessage />
 											</FormItem>
 										)}
 									/>
-									<Button className="w-full" type="submit">
-										Sign in
+									<Button
+										disabled={form.formState.isSubmitting}
+										className="w-full"
+										type="submit"
+									>
+										{form.formState.isSubmitting
+											? "Signing in..."
+											: "Sign in"}
 									</Button>
 								</form>
 							</Form>
