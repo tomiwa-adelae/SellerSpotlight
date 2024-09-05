@@ -28,6 +28,7 @@ const SellerLists = ({ sellers }: any) => {
 								name: string;
 								rating: number;
 								review: string;
+								logo: string;
 							},
 							index: string
 						) => (
@@ -35,7 +36,7 @@ const SellerLists = ({ sellers }: any) => {
 								<TableCell className="font-medium">
 									<div className="flex items-start md:items-center justify-start flex-col md:flex-row">
 										<img
-											src={"/assets/icons/word.svg"}
+											src={seller.logo}
 											alt="Word file"
 											className="w-6 h-6 object-cover mr-2"
 										/>

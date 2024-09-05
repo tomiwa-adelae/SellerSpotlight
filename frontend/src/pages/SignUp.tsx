@@ -21,6 +21,7 @@ import axios from "axios";
 import { BASE_URL } from "@/constants";
 import { Eye, EyeOff } from "lucide-react";
 import Logo from "@/components/shared/Logo";
+import Footer from "@/components/shared/Footer";
 const FormSchema = z.object({
 	fullName: z.string().min(2, {
 		message: "Full name must be at least 2 characters.",
@@ -197,15 +198,11 @@ const SignUp = () => {
 						</div>
 					</div>
 				</div>
-				<footer>
-					<small className="font-semibold">
-						&copy; SellerSpotlight 2024. All Rights Reserved.
-					</small>
-				</footer>
+				<Footer />
 			</div>
 			<div className="flex-1 fixed top-0 left-0 w-screen md:static">
 				<img
-					src={"/assets/images/auth-img.jpg"}
+					src={"/assets/images/signup-img.jpg"}
 					className="h-screen object-cover w-screen"
 				/>
 			</div>

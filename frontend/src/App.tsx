@@ -9,6 +9,7 @@ import Reviews from "./pages/Reviews";
 
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "./context/AuthProvider";
+import NotFound from "./pages/NotFound";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/dashboard" element={<Dashboard />} />
 					<Route path="/sellers" element={<Sellers />} />
 					<Route path="/reviews" element={<Reviews />} />
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 				<Toaster />
 			</ThemeProvider>

@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -7,10 +8,7 @@ const Home = () => {
 		<div>
 			<Header />
 			<div className="container">
-				<div className="min-h-[70vh] flex flex-col items-start text-left justify-center gap-6 w-full md:w-5/6 mx-auto">
-					<h3 className="text-base md:text-lg font-semibold text-gray-500">
-						Shining a Light on Trusted Sellers
-					</h3>
+				<div className="min-h-[80vh] flex flex-col items-start text-left justify-center gap-6 w-full md:w-5/6 mx-auto">
 					<h1
 						className="text-4xl md:text-5xl lg:text-6xl"
 						style={{ fontFamily: "Irish Grover" }}
@@ -31,6 +29,7 @@ const Home = () => {
 						<Link to="/sign-up">Get started</Link>
 					</Button>
 				</div>
+				<Footer />
 			</div>
 		</div>
 	);

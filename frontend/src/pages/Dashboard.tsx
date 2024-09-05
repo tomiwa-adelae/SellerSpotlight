@@ -4,6 +4,7 @@ import Pagination from "@/components/Pagination";
 import SearchBar from "@/components/SearchBar";
 import SellerLists from "@/components/SellerLists";
 import { BASE_URL } from "@/constants";
+import { useAuth } from "@/context/AuthProvider";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -24,6 +25,8 @@ const Dashboard: React.FC = () => {
 	const searchParams = new URLSearchParams(location.search);
 	const keyword = searchParams.get("query") || "";
 	const currentPage = parseInt(searchParams.get("page") || "1", 10);
+
+	const { user } = useAuth();
 
 	useEffect(() => {
 		const fetchSellers = async () => {
@@ -49,7 +52,7 @@ const Dashboard: React.FC = () => {
 		<MainLayout>
 			<main>
 				<h1 className="font-semibold text-2xl">
-					Welcome, Tomiwa Adelae 👋
+					Welcome, {user?.fullName} 👋
 				</h1>
 				<p className="text-sm mt-2 dark:text-gray-300">
 					Start the day discovering trusted sellers with honest

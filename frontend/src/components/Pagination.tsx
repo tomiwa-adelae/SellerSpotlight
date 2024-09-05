@@ -27,7 +27,7 @@ const Pagination = ({
 	};
 
 	return (
-		<div className="flex items-center justify-between">
+		<div className="flex items-center justify-between mb-4">
 			<Button
 				variant={"ghost"}
 				className="flex justify-center group/modal-btn px-4 py-2 rounded-md text-center relative overflow-hidden"

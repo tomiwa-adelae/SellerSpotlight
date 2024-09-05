@@ -37,7 +37,7 @@ import { githubRepo } from "@/constants";
 
 export function ProfileDropDown() {
 	const navigate = useNavigate();
-	const { logout } = useAuth();
+	const { logout, user } = useAuth();
 	const { toast } = useToast();
 
 	const handleLogout = async () => {
@@ -49,20 +49,20 @@ export function ProfileDropDown() {
 		navigate("/sign-in");
 	};
 
+	console.log(user);
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<div className="flex cursor-pointer items-center justify-start gap-2">
 					<img
-						src={"/assets/images/user.jpg"}
-						alt="Tomiwa"
+						src={user?.picture}
+						alt={user?.fullName}
 						className="rounded-full w-10 h-10 object-cover"
 					/>
 					<div className="flex items-start flex-col justify-center space-y-0">
-						<h3 className="text-sm font-bold">Tomiwa Adelae</h3>
-						<small className="text-xs">
-							adelaetomiwa6@gmail.com
-						</small>
+						<h3 className="text-sm font-bold">{user?.fullName}</h3>
+						<small className="text-xs">{user?.email}</small>
 					</div>
 				</div>
 			</DropdownMenuTrigger>

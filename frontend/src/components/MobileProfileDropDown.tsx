@@ -37,7 +37,7 @@ import { githubRepo } from "@/constants";
 
 export function MobileProfileDropDown() {
 	const navigate = useNavigate();
-	const { logout } = useAuth();
+	const { logout, user } = useAuth();
 	const { toast } = useToast();
 
 	const handleLogout = async () => {
@@ -54,8 +54,8 @@ export function MobileProfileDropDown() {
 			<DropdownMenuTrigger asChild>
 				<div className="flex cursor-pointer items-center justify-start gap-2">
 					<img
-						src={"/assets/images/user.jpg"}
-						alt="Tomiwa"
+						src={user?.picture}
+						alt={user?.fullName}
 						className="rounded-full w-8 h-8 object-cover"
 					/>
 				</div>

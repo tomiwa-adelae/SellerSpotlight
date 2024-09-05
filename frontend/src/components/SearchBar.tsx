@@ -15,8 +15,13 @@ const SearchBar = () => {
 			let newUrl = "";
 
 			if (keyword) {
-				newUrl = formUrlQuery({
+				// Remove 'page' key before adding the 'query' parameter
+				const searchParamsWithoutPage = removeKeysFromQuery({
 					params: location.search,
+					keysToRemove: ["page"],
+				});
+				newUrl = formUrlQuery({
+					params: searchParamsWithoutPage,
 					key: "query",
 					value: keyword,
 				});

@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 import { redirect } from "react-router-dom";
 import { useAuth } from "@/context/AuthProvider";
 import Logo from "@/components/shared/Logo";
+import Footer from "@/components/shared/Footer";
 
 const FormSchema = z.object({
 	email: z.string().min(2, {
@@ -175,11 +176,7 @@ const SignIn = () => {
 						</div>
 					</div>
 				</div>
-				<footer>
-					<small className="font-semibold">
-						&copy; SellerSpotlight 2024. All Rights Reserved.
-					</small>
-				</footer>
+				<Footer />
 			</div>
 			<div className="flex-1 fixed top-0 left-0 w-screen md:static">
 				<img
