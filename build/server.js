@@ -23,11 +23,18 @@ app.use((0, cookie_parser_1.default)());
 // API Routes
 app.use("/api/users", userRoutes_1.default);
 app.use("/api/sellers", sellerRoutes_1.default);
-app.get("/", (req, res) => {
-    res.send("API is up and running...");
-});
-app.use(express_1.default.static(path_1.default.join(__dirname, "frontend/dist")));
-app.get("*", (req, res) => res.sendFile(path_1.default.resolve(__dirname, "frontend", "dist", "index.html")));
+if (process.env.NODE_ENV === "production") {
+    // Serve the static files from frontend/dist
+    app.use(express_1.default.static(path_1.default.join(__dirname, "../frontend/dist")));
+    // Serve index.html for all remaining routes to handle SPA
+    app.get("*", (req, res) => res.sendFile(path_1.default.resolve(__dirname, "../frontend/dist", "index.html")));
+    console.log(path_1.default.join(__dirname, "../frontend/dist"));
+}
+else {
+    app.get("/", (req, res) => {
+        res.send("API is up and running...");
+    });
+}
 // Middleware
 app.use(errorMiddleware_1.notFound);
 app.use(errorMiddleware_1.errorHandler);
