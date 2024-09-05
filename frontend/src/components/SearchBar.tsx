@@ -1,8 +1,5 @@
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const SearchBar = () => {
@@ -12,28 +9,24 @@ const SearchBar = () => {
 
 	useEffect(() => {
 		const delayDebounceFn = setTimeout(() => {
-			let newUrl = "";
+			const searchParams = new URLSearchParams(location.search);
 
 			if (keyword) {
-				// Remove 'page' key before adding the 'query' parameter
-				const searchParamsWithoutPage = removeKeysFromQuery({
-					params: location.search,
-					keysToRemove: ["page"],
-				});
-				newUrl = formUrlQuery({
-					params: searchParamsWithoutPage,
-					key: "query",
-					value: keyword,
-				});
+				// Remove the 'page' parameter before setting 'query'
+				searchParams.delete("page");
+				searchParams.set("query", keyword);
 			} else {
-				newUrl = removeKeysFromQuery({
-					params: location.search,
-					keysToRemove: ["query"],
-				});
+				// If no keyword, remove both 'query' and 'page'
+				searchParams.delete("query");
+				searchParams.delete("page");
 			}
 
-			navigate(newUrl, { replace: false });
-		}, 3000);
+			// Update the URL without unnecessary encoding
+			navigate(`${location.pathname}?${searchParams.toString()}`, {
+				replace: false,
+			});
+		}, 1500);
+
 		return () => clearTimeout(delayDebounceFn);
 	}, [keyword, location, navigate]);
 
@@ -44,10 +37,6 @@ const SearchBar = () => {
 				placeholder="Search sellers by name..."
 				onChange={(e) => setKeyword(e.target.value)}
 			/>
-			<Button type="submit">
-				<Search className="w-4 h-4 md:mr-2" />
-				<span className="hidden md:block">Search</span>
-			</Button>
 		</div>
 	);
 };

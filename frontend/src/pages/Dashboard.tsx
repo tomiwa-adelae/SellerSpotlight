@@ -5,6 +5,7 @@ import SearchBar from "@/components/SearchBar";
 import SellerLists from "@/components/SellerLists";
 import { BASE_URL } from "@/constants";
 import { useAuth } from "@/context/AuthProvider";
+import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -12,10 +13,13 @@ import { useLocation } from "react-router-dom";
 interface Seller {
 	id: string;
 	name: string;
-	// Add other relevant fields based on your API response
+	rating: string;
+	review: string;
 }
 
 const Dashboard: React.FC = () => {
+	const { toast } = useToast();
+
 	const [loading, setLoading] = useState<boolean>(false);
 	const [sellers, setSellers] = useState<Seller[]>([]);
 	const [page, setPage] = useState<number>(1);
@@ -38,8 +42,13 @@ const Dashboard: React.FC = () => {
 				setSellers(res.data.sellers);
 				setPage(res.data.page);
 				setPages(res.data.pages);
-			} catch (error) {
-				console.error("Error fetching sellers:", error);
+			} catch (error: any) {
+				toast({
+					title:
+						error?.response?.data?.message ||
+						"Something went wrong!",
+					variant: "destructive",
+				});
 			} finally {
 				setLoading(false);
 			}

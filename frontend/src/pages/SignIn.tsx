@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -17,7 +17,6 @@ import axios from "axios";
 import { BASE_URL } from "@/constants";
 import { Eye, EyeOff } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { redirect } from "react-router-dom";
 import { useAuth } from "@/context/AuthProvider";
 import Logo from "@/components/shared/Logo";
 import Footer from "@/components/shared/Footer";

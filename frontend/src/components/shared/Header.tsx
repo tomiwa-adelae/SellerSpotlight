@@ -1,8 +1,5 @@
-import { navLinks } from "@/constants";
-import { Link } from "react-router-dom";
-import { Theme } from "./Theme";
-import { MobileProfileDropDown } from "../MobileProfileDropDown";
 import Logo from "./Logo";
+import { Theme } from "./Theme";
 
 const Header = () => {
 	return (

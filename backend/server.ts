@@ -32,9 +32,6 @@ app.get("/", (req: Request, res: Response) => {
 	res.send("API is up and running...");
 });
 
-const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
-
 app.use(express.static(path.join(__dirname, "frontend/dist")));
 
 app.get("*", (req, res) =>

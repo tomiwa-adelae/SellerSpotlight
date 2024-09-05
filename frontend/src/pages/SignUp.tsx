@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-// import { toast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -14,7 +13,6 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/context/AuthProvider";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
@@ -22,6 +20,7 @@ import { BASE_URL } from "@/constants";
 import { Eye, EyeOff } from "lucide-react";
 import Logo from "@/components/shared/Logo";
 import Footer from "@/components/shared/Footer";
+
 const FormSchema = z.object({
 	fullName: z.string().min(2, {
 		message: "Full name must be at least 2 characters.",
