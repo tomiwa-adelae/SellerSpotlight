@@ -9,6 +9,7 @@ import {
 import { sidebarLinks } from "@/constants";
 import { Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import Logo from "./shared/Logo";
 
 export function MobileNavbar() {
 	const location = useLocation();
@@ -27,24 +28,7 @@ export function MobileNavbar() {
 			>
 				<SheetHeader className="w-full">
 					<SheetClose asChild>
-						<Link
-							to="/"
-							className="flex items-center justify-start gap-2"
-						>
-							<img
-								src={"/assets/logo.png"}
-								alt={"SchoolHub Logo"}
-								width={1000}
-								height={1000}
-								className="w-8 h-8 md:w-10 md:h-10 object-cover"
-							/>
-							<h3
-								style={{ fontFamily: "Irish Grover" }}
-								className="text-purple-400 text-2xl font-bold"
-							>
-								SellerSpotlight
-							</h3>
-						</Link>
+						<Logo />
 					</SheetClose>
 				</SheetHeader>
 				<nav className="flex-1 mt-4 w-full flex items-start justify-start gap-2 flex-col pt-4">

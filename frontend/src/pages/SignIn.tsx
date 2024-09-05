@@ -105,6 +105,7 @@ const SignIn = () => {
 												</FormLabel>
 												<FormControl>
 													<Input
+														type="email"
 														placeholder="johndoe@gmail.com"
 														{...field}
 													/>
