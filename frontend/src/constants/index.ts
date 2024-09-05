@@ -74,7 +74,8 @@ export const themes = [
 	},
 ];
 
-export const BASE_URL = "http://localhost:5000";
+// export const BASE_URL = "http://localhost:5000";
+export const BASE_URL = "";
 
 export const githubRepo = "https://github.com/tomiwa-adelae/Seller-s-hub";
 
