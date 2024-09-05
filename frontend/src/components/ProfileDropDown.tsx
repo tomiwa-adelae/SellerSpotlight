@@ -48,8 +48,6 @@ export function ProfileDropDown() {
 		navigate("/sign-in");
 	};
 
-	console.log(user);
-
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
