@@ -4,7 +4,7 @@ const Reviews = () => {
 	return (
 		<MainLayout>
 			<div>
-				<h1 className="text-3xl text-blue-400 font-semibold">
+				<h1 className="text-3xl text-green-400 font-semibold">
 					This are the reviews of all sellers
 				</h1>
 				<p className="text-sm mt-4">

@@ -29,7 +29,7 @@ export function Theme() {
 					return (
 						<DropdownMenuItem
 							className={`uppercase cursor-pointer ${
-								mode === value && "bg-blue-400 text-white"
+								mode === value && "bg-green-400 text-white"
 							} font-bold text-xs`}
 							key={index}
 							onClick={() => {

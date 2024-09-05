@@ -63,9 +63,9 @@ export function MobileNavbar() {
 									to={route}
 									className={`flex items-center justify-start w-full rounded-md p-3 text-xs font-bold transition  ${
 										isActive
-											? "bg-blue-400 text-white"
+											? "bg-green-400 text-white"
 											: "bg-transparent"
-									} hover:bg-blue-200 dark:hover:bg-blue-300`}
+									} hover:bg-green-200 dark:hover:bg-green-300`}
 								>
 									<Icon className="w-4 h-4 mr-2" />
 									{label}

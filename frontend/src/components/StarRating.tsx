@@ -11,12 +11,14 @@ const StarRating = ({ rating }: { rating: number }) => {
 	const stars = Array.from({ length: 5 }, (_, index) => {
 		const starValue = index + 1;
 		if (starValue <= rating) {
-			return <IoStar key={index} className="text-blue-500 w-4 h-4" />;
+			return <IoStar key={index} className="text-green-500 w-4 h-4" />;
 		} else if (starValue - rating < 1) {
-			return <IoStarHalf key={index} className="text-blue-500 w-4 h-4" />;
+			return (
+				<IoStarHalf key={index} className="text-green-500 w-4 h-4" />
+			);
 		} else {
 			return (
-				<IoStarOutline key={index} className="text-blue-200 w-4 h-4" />
+				<IoStarOutline key={index} className="text-green-200 w-4 h-4" />
 			);
 		}
 	});

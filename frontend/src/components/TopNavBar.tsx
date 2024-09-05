@@ -12,8 +12,8 @@ const TopNavBar = ({ children }: { children?: React.ReactNode }) => {
 		>
 			<Link to="/" className="flex items-center justify-start gap-2">
 				<img
-					src={"/assets/logo.png"}
-					alt={"SchoolHub Logo"}
+					src={"/assets/logo.svg"}
+					alt={"SellerSpotlight Logo"}
 					width={1000}
 					height={1000}
 					className="w-8 h-8 md:hidden"

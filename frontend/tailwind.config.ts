@@ -28,7 +28,11 @@ const config = {
 				"100": "100",
 			},
 			colors: {
-				dark: "#0F172A",
+				dark: "#131619",
+				white: "#ffffff",
+				green: {
+					"400": "#17CF97",
+				},
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {

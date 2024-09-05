@@ -6,15 +6,15 @@ const Logo = () => {
 		<div>
 			<Link to="/" className="flex items-center justify-start gap-2">
 				<img
-					src={"/assets/logo.png"}
-					alt={"SchoolHub Logo"}
+					src={"/assets/logo.svg"}
+					alt={"SellerSpotlight Logo"}
 					width={1000}
 					height={1000}
 					className="w-8 h-8 md:w-10 md:h-10 object-cover"
 				/>
 				<h3
 					style={{ fontFamily: "Irish Grover" }}
-					className="text-purple-400 text-2xl font-bold"
+					className="text-green-400 text-2xl font-bold"
 				>
 					SellerSpotlight
 				</h3>

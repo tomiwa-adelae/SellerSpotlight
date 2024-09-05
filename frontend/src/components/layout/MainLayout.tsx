@@ -31,7 +31,7 @@ export default function MainLayout({
 	return (
 		<div>
 			<SideBar />
-			<div className="flex-1 md:ml-60">
+			<div className="flex-1 md:ml-64">
 				<TopNavBar />
 				<div className="container py-4 mt-14 md:mt-0">{children}</div>
 			</div>
