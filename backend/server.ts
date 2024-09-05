@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import path from "path";
+
 import express, { Express, Response, Request } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -29,6 +31,15 @@ app.use("/api/sellers", sellerRoutes);
 app.get("/", (req: Request, res: Response) => {
 	res.send("API is up and running...");
 });
+
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+
+app.get("*", (req, res) =>
+	res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"))
+);
 
 // Middleware
 app.use(notFound);
