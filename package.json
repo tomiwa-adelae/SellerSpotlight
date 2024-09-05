@@ -9,7 +9,7 @@
 		"server": "nodemon backend/server.ts",
 		"data:import": "ts-node backend/seeder",
 		"data:destroy": "ts-node backend/seeder -d",
-		"build-prod": "npx tsc && npm install && npm install --prefix frontend --production=false && npm run build --prefix frontend"
+		"build-prod": " npm install && npx tsc && npm install --prefix frontend --production=false && npm run build --prefix frontend"
 	},
 	"author": "Tomiwa Adelae",
 	"license": "MIT",
