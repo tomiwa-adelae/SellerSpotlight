@@ -1,0 +1,161 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const sellers = [
+    {
+        name: "John's Electronics",
+        rating: 4.8,
+        review: "Excellent customer service and quick delivery.",
+        logo: "https://i.pinimg.com/236x/16/cf/be/16cfbea253cd2267dc1e05a7f4eca807.jpg",
+    },
+    {
+        name: "Fashion Hub",
+        rating: 4.2,
+        review: "Great collection of trendy outfits.",
+        logo: "https://www.shutterstock.com/image-vector/circle-letter-g-icon-logo-260nw-2129906861.jpg",
+    },
+    {
+        name: "Gadget World",
+        rating: 3.9,
+        review: "Wide variety of gadgets available at decent prices.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Iron-Duck.jpg",
+    },
+    {
+        name: "Healthy Living",
+        rating: 4.5,
+        review: "High-quality organic products.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Databerry-2.jpg",
+    },
+    {
+        name: "Book Haven",
+        rating: 5,
+        review: "A paradise for book lovers!",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Shoot-My-Dog-1.jpg",
+    },
+    {
+        name: "Tech Store",
+        rating: 4.7,
+        review: "Latest tech products with great deals.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Movers-logo.jpg",
+    },
+    {
+        name: "Home Essentials",
+        rating: 4.3,
+        review: "Affordable and durable home essentials.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Guitar-Studio.jpg",
+    },
+    {
+        name: "Beauty & Beyond",
+        rating: 4.6,
+        review: "Top-notch beauty products with excellent packaging.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Immanuel-Luthern-Church-1.jpg",
+    },
+    {
+        name: "Outdoor Adventures",
+        rating: 4.4,
+        review: "Great equipment for all your outdoor needs.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Rocket-Golf.jpg",
+    },
+    {
+        name: "Toy World",
+        rating: 4.9,
+        review: "Amazing collection of toys for kids of all ages.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Boundary.jpg",
+    },
+    {
+        name: "Fitness Gear",
+        rating: 4.1,
+        review: "Good quality fitness equipment at reasonable prices.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Compass.jpg",
+    },
+    {
+        name: "Pet Paradise",
+        rating: 4.5,
+        review: "Everything your pet needs, under one roof.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Shine-a-Light.jpg",
+    },
+    {
+        name: "Gourmet Delights",
+        rating: 4.8,
+        review: "Delicious gourmet food, fast delivery.",
+        logo: "hhttps://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Orbotix.jpg",
+    },
+    {
+        name: "Smart Home Store",
+        rating: 4.3,
+        review: "Innovative smart home products.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Unlock.jpg",
+    },
+    {
+        name: "Kids Fashion",
+        rating: 4.6,
+        review: "Stylish and comfortable clothing for kids.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Quick-Fish.jpg",
+    },
+    {
+        name: "Auto Parts Central",
+        rating: 4.2,
+        review: "Reliable auto parts with quick shipping.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Slow-Motion.jpg",
+    },
+    {
+        name: "Crafty Corner",
+        rating: 4.7,
+        review: "Unique and creative craft supplies.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Freelancer.jpg",
+    },
+    {
+        name: "Office Supplies",
+        rating: 4.4,
+        review: "Everything you need to keep your office running smoothly.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Boundary.jpg",
+    },
+    {
+        name: "Music Mania",
+        rating: 4.8,
+        review: "A haven for music lovers with a wide selection of instruments.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-SlingShot.gif",
+    },
+    {
+        name: "Bargain Bazaar",
+        rating: 3.8,
+        review: "Good deals on a variety of products.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Edge-Link.jpg",
+    },
+    {
+        name: "Glamour Station",
+        rating: 4.5,
+        review: "High-end beauty and skincare products.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-FitTalks.jpg",
+    },
+    {
+        name: "Eco Friendly Shop",
+        rating: 4.9,
+        review: "Environmentally friendly products, great service.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Shine-a-Pause.jpg",
+    },
+    {
+        name: "Digital World",
+        rating: 4.3,
+        review: "Latest gadgets and electronics, prompt support.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-EDN.jpg",
+    },
+    {
+        name: "Furniture Factory",
+        rating: 4.4,
+        review: "Stylish and comfortable furniture, reasonable prices.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Turn.jpg",
+    },
+    {
+        name: "Sports Central",
+        rating: 4.6,
+        review: "Quality sports gear for all levels.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Choose.jpg",
+    },
+    {
+        name: "Green Thumb",
+        rating: 4.7,
+        review: "Wide variety of plants and gardening tools.",
+        logo: "https://visme.co/blog/wp-content/uploads/2017/08/40-Creative-Logo-Designs-to-Inspire-You-Bison-1.jpg",
+    },
+];
+exports.default = sellers;
